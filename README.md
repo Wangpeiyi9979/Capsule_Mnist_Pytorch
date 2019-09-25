@@ -22,8 +22,8 @@
 
 模型|任务一(ACC) | 任务二(ACC)
 ---|---|---
-CNN|98.7\% | 22.0\%
-CNN+Capsule|99.0\% | 94.0\%
+CNN|98.7\% | 27.8\%
+CNN+Capsule|99.0\% | 94.4\%
 
 # 详细代码解读
 https://wangpeiyi.blog.csdn.net/article/details/101352988
