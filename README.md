@@ -1,3 +1,7 @@
+# 项目环境
+- Pytorch: 1.x
+- Python3.6
+
 # 项目简介
 本项目使用`Pytorch`复现了简单的`CNN+Capsule`网络。
 实验为【单数字训练，双数字测试】，实验结果证明了Capsule网络【举一反三】的特性，本项目是[该项目](https://kexue.fm/archives/4819)的`Pytorch`复现
