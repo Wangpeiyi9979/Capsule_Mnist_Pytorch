@@ -15,18 +15,6 @@ def squash(x, axis=-1):
     scale = torch.sqrt(x_squared_norm) / (0.5 + x_squared_norm)
     return scale * x
 
-def softmax(x, axis=-1):
-    """
-    功能: 实现自己的softmax函数，较正常softmax更平滑
-    输入:
-        x(tensor)[B, D1, D2]
-    输出
-        out(tensor)[B, D1, D2]
-    """
-
-    ex = torch.exp(x - torch.max(x, axis, keepdim=True)[0])
-    return ex / torch.sum(ex, axis, keepdim=True)
-
 class Capsule(nn.Module):
     def __init__(self, input_dim, num_capsule, dim_capsule, routings=3, share_weights=True, activation='squash', **kwargs):
         """
@@ -79,7 +67,7 @@ class Capsule(nn.Module):
         b = torch.zeros_like(u_hat_vecs[:, :, :, 0])            # (B, ON, IN)
 
         for i in range(self.routings):
-            c = softmax(b, 1)
+            c = torch.softmax(b, 1)
             o = torch.matmul(c.unsqueeze(2), u_hat_vecs).squeeze(2)        # (B, ON, DC)
             if i < self.routings - 1:
                 o = F.normalize(o, 2, -1)                                          # (B, ON, DC)

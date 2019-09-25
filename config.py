@@ -4,7 +4,7 @@ class DefaultConfig(object):
 
     clip_grad = 2
 
-    batch_size = 128
+    batch_size = 64
     num_epochs = 10
 
     num_class = 10

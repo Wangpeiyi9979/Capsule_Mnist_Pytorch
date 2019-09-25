@@ -21,6 +21,16 @@ class CNN(BasicModule):
         self.Dense1 = nn.Linear(128, 128)
         self.Dense2 = nn.Linear(128, 10)
 
+        self.init_weight()
+
+    def init_weight(self):
+        nn.init.xavier_normal_(self.Conv2d1.weight)
+        nn.init.xavier_normal_(self.Conv2d2.weight)
+        nn.init.xavier_normal_(self.Conv2d3.weight)
+        nn.init.xavier_normal_(self.Conv2d4.weight)
+        nn.init.xavier_normal_(self.Dense1.weight)
+        nn.init.xavier_normal_(self.Dense2.weight)
+
     def forward(self, x, y=None):
 
         x = self.Conv2d1(x).relu()
@@ -56,6 +66,14 @@ class CNN_Capsule(BasicModule):
         self.Conv2d4 = nn.Conv2d(128, 128, (3, 3))
 
         self.capsule = Capsule(input_dim=128, num_capsule=10, dim_capsule=16, routings=3, share_weights=True)
+
+        self.init_weight()
+
+    def init_weight(self):
+        nn.init.xavier_normal_(self.Conv2d1.weight)
+        nn.init.xavier_normal_(self.Conv2d2.weight)
+        nn.init.xavier_normal_(self.Conv2d3.weight)
+        nn.init.xavier_normal_(self.Conv2d4.weight)
 
     def forward(self, x, y=None):
 
